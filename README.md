@@ -3,7 +3,7 @@
 This repository contains all source code for the Synereo web client single-page application (SPA). Grunt is used to compile the app into its production files. Use the `grunt` to compile the app and copy files to the `static` folder for local sandbox testing. `grunt stage` will compile the source code into the `dist` folder which can be used to upload to a production environment.
 
 ## Getting Started
-### Install required node modules:
+### Install required node modules
 
 `npm install`
 
