@@ -1,0 +1,24 @@
+/* main entry point for LESS compilation */
+
+/* Variables come first */
+@import "variables.less";
+
+.sy-container, .sy-overrides {
+  @import "../node_modules/bootstrap/less/bootstrap.less";
+  @import "ipin/ipin.less";
+  @import "synereo/synereo.less";
+}
+
+.sy-overrides {
+  @import "overrides/overrides.less";
+}
+
+.sy-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+}
+

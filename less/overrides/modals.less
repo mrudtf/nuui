@@ -1,0 +1,87 @@
+.modal {
+  overflow-y: auto !important;
+}
+
+.modal-backdrop.in {
+  opacity: 0.9;
+}
+
+.modal-dialog {
+  margin: 80px auto 30px auto;
+  color: #fff;
+}
+
+.modal-content {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  background: transparent;
+  border: 0;
+}
+
+.modal-header, .modal-body, .modal-footer {
+  border: 0;
+  border-top: 0;
+  border-bottom: 0;
+  background: transparent;
+  text-align: center;
+}
+
+.modal-header {
+  .modal-title {
+    font-family: @headings-thin-font;
+    font-size: 28px;
+  }
+  .close {
+    display: none;
+    background: transparent;
+    color: #fff;
+  }
+}
+
+.modal-body {
+  font-family: @text-normal-font;
+  font-size: 16px;
+}
+
+.modal-body {
+  form {
+    label {
+      font-family: @text-normal-font;
+      font-weight: normal;
+      text-align: left;
+      font-size: 14px;
+    }
+    textarea {
+      height: initial;
+    }
+  }
+  .btn-picker {
+    background: transparent;
+    border: 0;
+    border-radius: 0;
+  }
+}
+
+.modal-footer {
+  padding-top: 30px;
+}
+
+.modal-footer {
+  .btn {
+    display: block;
+    width: 100%;
+    border-radius: 0;
+  }
+  .btn + .btn {
+    margin-top: 20px;
+    margin-left:0;
+    margin-right:0;
+  }
+
+  .btn {
+    font-family: @btns-bold-font;
+    font-weight: normal;
+    text-transform: uppercase;
+    border-radius: 0;
+  }
+}

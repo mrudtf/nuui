@@ -1,0 +1,112 @@
+//== Main page containers
+//
+@media (min-width: 768px) {
+  .sy-scaffold {
+    padding-top: 96px;
+  }
+}
+
+.sy-page {
+  width: 100%;
+  padding-top: 15px;
+  padding-bottom:30px;
+}
+
+@media (max-width: 768px) {
+  .sy-page .row, .bootbox-body .row {
+    padding-left: 25px;
+  }
+}
+
+.sy-page-title {
+  width: 100%;
+  text-align: center;
+  margin: @ui-prominent-margin;
+}
+
+.sy-page-cta {
+  width: 100%;
+  text-align: center;
+  margin: @ui-prominent-margin;
+}
+
+
+//== Page background scaffolds
+//
+.sy-bg-white {
+  background: @page-white-bg;
+}
+
+.sy-bg-prompt {
+  background: @page-black-bg;
+}
+
+.sy-bg-prompt {
+  h1,h2,h3,h4,p {
+    color: @text-color-white;
+  }
+}
+
+
+//== Customize bootstrap a bit
+//
+@media (min-width: 768px) {
+  .row-margin {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+}
+@media (max-width: 768px) {
+  .row-padded {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+}
+
+
+//== Typography elements for stylized text
+//
+.text-tile {
+  padding: @card-padding-container;
+  background: @ui-element-bg;
+  border: @ui-element-border;
+  margin-bottom: @ui-element-spacing;
+}
+.text-tile {
+  h2 {
+    text-transform: capitalize;
+  }
+  .points-data {
+    padding-top: 25px;
+    text-align: right;
+    color: #969697;
+    text-transform: uppercase;
+    font-family: @headings-bold-font;
+    font-size: 14px;
+  }
+  .points-data i {
+    font-size: 1.8em;
+    margin-left: 15px;
+    vertical-align: middle;
+  }
+}
+
+.leading-number {
+  float: left;
+  display: block;
+  margin-right: @ui-element-spacing;
+  margin-top: @ui-element-spacing;
+  height: 60px;
+}
+.leading-number {
+  .number {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    text-align: center;
+    font-size: 22px;
+    padding: @ui-element-padding;
+    background: @text-bg-pink;
+    color: @text-color-white;
+  }
+}

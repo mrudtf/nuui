@@ -1,0 +1,67 @@
+.sy-page {
+  .thumb {
+    .btn-pink {
+      color: #fff !important;
+      font-style: normal !important;
+    }
+    .thumbtitle {
+      text-align: center;
+      font-size: 1.6em;
+      font-weight: 300;
+      color: @text-color-pink;
+      .text-overflow();
+    }
+  }
+  .sy-page-title {
+    a {
+      padding-left: 10px;
+    }
+  }
+
+  .sy-title {
+    display: inline-block;
+    text-align: center;
+    h1 {
+      a {
+        padding-right: 5px;
+      }
+      small {
+        padding-left: 10px;
+        display: inline-block;
+      }
+    }
+  }
+
+  .thumb.thumb-select {
+    cursor: pointer;
+    background: transparent !important;
+    border: none !important;
+    text-align: center;
+  }
+  .thumb.thumb-select {
+    .img-container {
+      width: 236px;
+      height: 236px;
+      overflow: hidden;
+    }
+    i {
+      font-size: 100px;
+      margin-top: 50px;
+      color: @text-color-white;
+    }
+  }
+}
+
+// mobile styling
+@media @phone {
+  .sy-page {
+    .sy-title {
+    }
+    .btn-group {
+      padding-bottom: 10px;
+      a {
+        font-size: 1em;
+      }
+    }
+  }
+}

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Synereo Local Sandbox</title>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+    <h1>This page simulates the Synereo app in a local HTML file.</h2>
+    <p>To open the simulation, <a href="#">click here</a>.</p>
+
+    <!-- dependencies -->
+    <script src="https://code.jquery.com/jquery-1.7.1.min.js"></script>
+
+    <!-- a development config is stored in a sandbox_config.json -->
+    <script type="text/javascript">
+        window.syConfig = {
+            clientContext: 'sandbox',
+            devTarget: 'default',
+            loginPath: './sandbox.html',
+            staticImgPath: './img/dist/'
+        }
+    </script>
+
+    <!-- fake app data is initialized here -->
+    <script type="text/javascript">
+    </script>
+
+    <!-- main entry point, use built/browserified version of source -->
+    <script src="dist/synereo.js"></script>
+
+</body>
+</html>
