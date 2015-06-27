@@ -18,7 +18,9 @@ module.exports = function(React, _, Hub) {
   // Utilities
 
   // Re-usable Cards
-  var BoardCard = require('./pages/cards/boardCard.jsx')(React, Hub, _, ApiMixin, DateFormatMixin);
+
+  // Logged Out
+  var LoggedOut = require('./pages/loggedout/loggedOut.jsx')(React, _, PageMixin, PromptMixin)
 
   // Trending
 
@@ -43,15 +45,15 @@ module.exports = function(React, _, Hub) {
       Remaining functions are routes and corresponding functions
      */
     routes: {
-      '/': 'home',
+      '/': 'login',
 
       // testing routes
       '/_/test/prompts': 'testPrompts'
     },
 
-    home: function() {
+    login: function() {
       this.runRoute(
-        Home(_.extend({}, this.props, { title: 'Home' }))
+        LoggedOut(_.extend({}, this.props, { title: 'Sign Up' }))
       );
     },
 

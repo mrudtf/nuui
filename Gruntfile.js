@@ -14,7 +14,7 @@ module.exports = function (grunt) {
       throw new Error("It looks like you are attempting to use production keys while specifying a development target. This could indicate you are accidentally pushing to production. Please check your environment variables.")
     }
 
-    console.log("\n\n 🙌 Synereo Web Client 🙌 \n\n");
+    console.log("\n\n 🙌Synereo Web Client🙌 \n\n");
 
     grunt.initConfig({
       browserify: {
@@ -46,8 +46,11 @@ module.exports = function (grunt) {
           dest: 'dist/synereo.js'
         },
         css: {
-            src: 'css/*.css',
-            dest: 'dist/synereo.css'
+          src: [
+            'css/*.css',
+            'css/fonts/*.css'
+          ],
+          dest: 'dist/synereo.css'
         }
       },
       uglify: {
@@ -80,10 +83,8 @@ module.exports = function (grunt) {
       copy: {
         main: {
           files: [
-            // copy javascript to sandbox cartridge
-            {expand: true, flatten: true, src: ['dist/*.min.js'], dest: '../cartridge/static/default/js', filter: 'isFile'},
-            // copy css to sandbox cartridge
-            {expand: true, flatten: true, src: ['dist/*.min.css'], dest: '../cartridge/static/default/css', filter: 'isFile'}
+            // copy html to dist folder
+            {expand: true, flatten: true, src: ['html/*.html'], dest: 'dist/', filter: 'isFile'}
           ],
         },
       },
@@ -92,9 +93,9 @@ module.exports = function (grunt) {
           region: 'us-west-2',
           uploadConcurrency: 4, // 5 simultaneous uploads
           downloadConcurrency: 4 // 5 simultaneous downloads
-        },
+        }
         // development s3 uploads
-        development: {
+        /*development: {
           options: {
             accessKeyId: '', // Use the variables
             secretAccessKey: '', // You can also use env variables
@@ -141,7 +142,7 @@ module.exports = function (grunt) {
             {expand: true, cwd: 'img/dist/', src: ['**'], dest: 'production/synereo/img', params: {CacheControl: '0'}},
             {expand: true, cwd: 'fonts/build/', src: ['**'], dest: 'production/synereo/fonts/build', params: {CacheControl: '0'}}
           ]
-        },
+        },*/
       },
       less: {
         development: {
@@ -209,12 +210,12 @@ module.exports = function (grunt) {
     grunt.registerTask('sandbox', ['browserify:app','less','concat','play:notify_ready','watch:sandbox']);
     grunt.registerTask('sandbox-watch', ['browserify:app','less','concat','play:notify_compiled']);
 
-    grunt.registerTask('development-watch', ['browserify:app','less','concat','aws_s3:development','play:notify_compiled']);
+    /*grunt.registerTask('development-watch', ['browserify:app','less','concat','aws_s3:development','play:notify_compiled']);
     grunt.registerTask('development', ['browserify:app','less','concat','uglify','cssmin','aws_s3:development']);
     grunt.registerTask('development-assets', ['aws_s3:development_assets']);
 
     grunt.registerTask('production', ['browserify:app','less','concat','uglify','cssmin','aws_s3:production']);
-    grunt.registerTask('production-assets', ['aws_s3:production_assets']);
+    grunt.registerTask('production-assets', ['aws_s3:production_assets']);*/
 
     grunt.registerTask('serve', ['connect:server']);
 };

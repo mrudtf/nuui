@@ -1,0 +1,100 @@
+//== Common page elements
+//
+//## Gray and brand colors for use across Bootstrap.
+
+h1 {
+  font-family: @headings-thin-font;
+  font-size: 26px;
+  font-weight: normal;
+}
+
+h2 {
+  font-family: @headings-bold-font;
+  font-weight: normal;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+h4 {
+  margin-top: 13px;
+  margin-bottom: 0;
+  line-height: 1.5em;
+  font-family: @text-bold-font;
+  font-size: 14px;
+}
+
+p {
+  font-size: 14px;
+  color: @text-normal-color;
+  font-family: @text-normal-font;
+}
+
+//== Styles for specialized text elements
+//
+//## Pink coloring and other typographical styles
+
+.text-pink {
+  color: @text-color-pink;
+}
+
+.text-white {
+  color: @text-color-white;
+}
+
+.text-bigger {
+  font-size: 2em;
+}
+
+.loved {
+  color: #ed248e !important;
+}
+
+.linkable {
+  cursor: pointer;
+}
+
+h1 {
+  .text-points {
+    font-family: @text-bold-font;
+    font-size: 1.3em;
+    text-transform: uppercase;
+  }
+  .text-points small {
+    text-transform: initial;
+    color: inherit;
+  }
+}
+
+p {
+  .text-points {
+    font-family: @text-bold-font;
+    text-transform: uppercase;
+  }
+}
+
+p.text-leader {
+  opacity: 0.8;
+}
+
+a.terms {
+  color: @text-normal-color;
+  text-decoration: underline;
+  font-size: 0.8em;
+}
+
+.form-group, h1 {
+  .counter {
+    float: right;
+    opacity: 0.8;
+    font-size: 0.85em;
+  }
+  .counter.exceeded {
+    color: red;
+  }
+}
+
+h1 .counter {
+  margin: 5px 0;
+  font-size: 14px;
+  font-weight: bold;
+}

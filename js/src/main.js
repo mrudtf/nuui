@@ -46,12 +46,9 @@ if(typeof (syConfig || {}).killSwitch==="undefined") {
     Continue initialization of Synereo web components
     **/
 
-  // Initialize the app container and add css tag
-  $('body').append('<div id="sy-container" class="sy-container" style="display:none;"></div>');
-
   // Set up contextual variables by using an idiom to
   // check the existence of different configuration keys
-  var clientContext = (typeof (syConfig || {}).devContext=="undefined" ? "production" : syConfig.devContext);
+  var clientContext = (typeof (syConfig || {}).clientContext=="undefined" ? "production" : syConfig.clientContext);
   var devTarget = (typeof (syConfig || {}).devTarget=="undefined" ? "" : syConfig.devTarget);
   var staticImgPath = (typeof (syConfig || {}).staticImgPath=="undefined" ? 'https://sy-assets.global.ssl.fastly.net/production/synereo/img/' : syConfig.staticImgPath);
 
@@ -77,13 +74,19 @@ if(typeof (syConfig || {}).killSwitch==="undefined") {
    **/
   console.log("\n\n 🙌 Synereo Web Client 🙌 \n\n");
 
+  // ensure the hash is present
+  if(window.location.hash=='') {
+    window.location.hash = '/';
+  }
+
   // shared component props
   var componentProps = {
     clientContext: clientContext,         // specifies either production, development, or sandbox
     staticImage: function(imageName) {    // base path to static images used in app, function returns file name + base path
       return staticImgPath+imageName;
     },
-    Hub: Hub
+    Hub: Hub,
+    fp: window.sy_fp
   }
 
   // render SPA component

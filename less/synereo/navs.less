@@ -3,48 +3,14 @@
   border-radius: 0;
 }
 
-.navbar-goback {
-  .navbar-default {
-    background: #fff;
-    background-color: #fff;
-    border: none;
-    max-height: 45px;
-  }
-
-  .navbar-default {
-    .center-block {
-      width: 100%;
-      position: absolute;
-      left: 0;
-      margin: 0 auto;
-      text-align: center;
-      padding-top: 5px;
-    }
-    .center-block img {
-      cursor: pointer;
-    }
-    .navbar-toggle {
-      display: none;
-    }
-    .navbar-brand {
-      position: absolute;
-      z-index: 10;
-      float: left;
-      padding: 14px 14px;
-      font-size: 16px;
-      line-height: 18px;
-      height: 45px;
-      cursor: pointer;
-    }
-  }
-}
-
 /* Main App Container (Nav, Page) */
 .sy-scaffold {
   .navbar-default.navbar-primary {
-    background: rgb(0,0,0);
-    border: none;
-    margin-top: 48px;
+    background: @navbar-primary-color;
+    border-bottom-color: @navbar-primary-border;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    font-family: @text-normal-font;
   }
   @media (max-width: 768px) {
     .navbar-default.navbar-primary {
@@ -81,8 +47,8 @@
       margin: 0 auto;
       text-align: center;
       padding-top: 10px;
-      color: #fff;
-      font-family: "ITCAvantGardeStd-Demi", Helvetica, Arial, sans-serif;
+      color: @text-normal-color;
+      font-family: @headings-bold-font;
       text-transform: uppercase;
     }
 
