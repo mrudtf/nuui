@@ -2,7 +2,7 @@
 
 module.exports = function(Hub, React, _, Page) {
 
-  var DropdownBtn = require('./pages/elements/dropdownBtn.jsx')(React, _, Hub);
+  var DropdownBtn = require('./elements/dropdownBtn.jsx')(React, _, Hub);
   var ApiMixin = require('./util/apiMixin.js')();
   var PromptMixin = require('./util/promptMixin.jsx')(_);
 
@@ -13,9 +13,16 @@ module.exports = function(Hub, React, _, Page) {
     getInitialState: function(){
       return { 
         pageTitle: '',
-        isAuthenticated: false,
-        session: {}
+        isAuthenticated: true,
+        session: {
+          name: 'Justin Long',
+          email: 'justinlong@outlook.com'
+        }
       };
+    },
+
+    authenticateUser: function() {
+      this.setState({isAuthenticated: true});
     },
 
     setTitle: function(title) {
@@ -29,6 +36,27 @@ module.exports = function(Hub, React, _, Page) {
         $('#sy-menu').removeClass('in');
         $(document).off('click');
       });
+    },
+
+    renderTitle: function() {
+      var self = this;
+
+      if(self.state.isAuthenticated) {
+        if(self.state.pageTitle=='') {
+          return (
+            <img src={self.props.staticImage("logo-square.png")} />
+          )
+        } else {
+          return (
+            <span class="sy-title">{self.state.pageTitle}</span>
+          )
+        }
+      } else {
+
+        return (
+          <img src={self.props.staticImage("logo-square.png")} />
+        )
+      }
     },
 
     renderMenu: function() {
@@ -51,6 +79,10 @@ module.exports = function(Hub, React, _, Page) {
       }
     },
 
+    renderNavigation: function() {
+
+    },
+
     render: function() {
       var self = this;
 
@@ -59,7 +91,7 @@ module.exports = function(Hub, React, _, Page) {
           <nav className="navbar navbar-default navbar-primary navbar-fixed-top">
             <div className="container-fluid">
                 <div className="center-block">
-                  {self.state.pageTitle}
+                  {self.renderTitle()}
                 </div>
               <div className="navbar-header">
                 <button className="navbar-toggle" type="button" onClick={self.toggleMenu}>
@@ -75,7 +107,12 @@ module.exports = function(Hub, React, _, Page) {
             </div>
           </nav>
 
-          {Page(_.extend({}, self.props, {setTitle: self.setTitle}))}
+          {Page(_.extend({}, self.props, {
+            setTitle: self.setTitle, 
+            isAuthenticated: self.state.isAuthenticated,
+            authenticateUser: self.authenticateUser, 
+            session: self.state.session
+          }))}
 
         </div>
       );

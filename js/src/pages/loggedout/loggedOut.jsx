@@ -25,17 +25,16 @@ module.exports = function(React, _, PageMixin, PromptMixin) {
                   <h3>Your life and ideas in a <em>private, secure, and decentralized</em> environment.</h3>
                   <hr className="intro-divider" />
                   <div className="text-center" style={{padding: '50px 0'}}>
-                    <div className="login-form-1">
+                    <div className="sy-form-compact">
                       <form id="register-form" className="text-left">
                         <div className="login-form-main-message"></div>
                         <div className="main-login-form">
                           <div className="login-group">
                             <div className="form-group">
-                            
-                            <div className="form-group">
                               <label for="reg_fullname" className="sr-only">Full Name</label>
                               <input type="text" className="form-control" id="reg_fullname" name="reg_fullname" placeholder="full name" />
                             </div>
+                            <div className="form-group">
                               <label for="reg_username" className="sr-only">Email address</label>
                               <input type="text" className="form-control" id="reg_username" name="reg_username" placeholder="username" />
                             </div>
@@ -51,10 +50,9 @@ module.exports = function(React, _, PageMixin, PromptMixin) {
                               <label for="reg_email" className="sr-only">Email</label>
                               <input type="text" className="form-control" id="reg_email" name="reg_email" placeholder="email" />
                             </div>
-                            
                             <div className="form-group login-group-checkbox">
                               <input type="checkbox" className="" id="reg_agree" name="reg_agree" />
-                              <label for="reg_agree">I agree with <a href="#">terms</a></label>
+                              <label for="reg_agree">I agree with <a href="#/terms">terms</a></label>
                             </div>
                           </div>
                           <button className="login-button" onClick={self.handleLogin}><i className="fa fa-chevron-right"></i></button>

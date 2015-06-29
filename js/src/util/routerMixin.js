@@ -13,10 +13,14 @@ module.exports = function(){
     },
 
     runSecureRoute: function(session, component, unauthorizedComponent){
+      var self = this;
+
+      // temporarily, we will authenticate for demo purposes
+      //self.props.authenticateUser();
+
       // if the user is authenticated, run the standard component
       // otherwise, display an unauthorized component
-      var self = this;
-      if(session.isAuthenticated) {
+      if(self.props.isAuthenticated) {
         self.runRoute(component);
       } else {
         self.runRoute(unauthorizedComponent);

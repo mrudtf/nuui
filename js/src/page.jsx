@@ -3,24 +3,29 @@
 module.exports = function(React, _, Hub) {
 
   // States
-  var LoadingState = require('./pages/states/loading.jsx')(React, _);
-  var LoadMoreBtn = require('./pages/elements/loadMoreBtn.jsx')(React, _);
+  var LoadingState = require('./states/loading.jsx')(React, _);
+  var LoadMoreBtn = require('./elements/loadMoreBtn.jsx')(React, _);
 
   // Mixins
   var RouterMixin = require('./util/routerMixin.js')();
   var PageMixin = require('./util/pageMixin.js')();
   var ApiMixin = require('./util/apiMixin.js')(_, LoadingState, LoadMoreBtn);
-  var MasonryMixin = require('./util/masonryMixin.js')();
+  var IsotopeMixin = require('./util/isotopeMixin.js')();
   var PromptMixin = require('./util/promptMixin.jsx')(_);
   var DragDropMixin = require('./util/dragDropMixin.js')(_);
-  var DateFormatMixin = require('./util/DateFormatMixin.jsx')();
+  var DateFormatMixin = require('./util/dateFormatMixin.jsx')();
+  var UrlsMixin = require('./util/urlsMixin.js')();
 
   // Utilities
 
-  // Re-usable Cards
+  // Cards
+  var PostCard = require('./cards/postCard.jsx')(React, Hub, _, DateFormatMixin, UrlsMixin);
+
+  // User
+  var UserHome = require('./pages/user/userHome.jsx')(React, _, PageMixin, IsotopeMixin, PromptMixin, PostCard);
 
   // Logged Out
-  var LoggedOut = require('./pages/loggedout/loggedOut.jsx')(React, _, PageMixin, PromptMixin)
+  var LoggedOut = require('./pages/loggedout/loggedOut.jsx')(React, _, PageMixin, PromptMixin);
 
   // Trending
 
@@ -45,15 +50,24 @@ module.exports = function(React, _, Hub) {
       Remaining functions are routes and corresponding functions
      */
     routes: {
-      '/': 'login',
+      '/':                'loggedout',
+      '/home':            'home', 
 
       // testing routes
       '/_/test/prompts': 'testPrompts'
     },
 
-    login: function() {
+    loggedout: function() {
       this.runRoute(
         LoggedOut(_.extend({}, this.props, { title: 'Sign Up' }))
+      );
+    },
+
+    home: function() {
+      this.runSecureRoute(
+        this.props.session,
+        UserHome(_.extend({}, this.props, { title: '' })),
+        this.notAuthorized()
       );
     },
 
