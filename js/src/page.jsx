@@ -10,7 +10,8 @@ module.exports = function(React, _, Hub) {
   var RouterMixin = require('./util/routerMixin.js')();
   var PageMixin = require('./util/pageMixin.js')();
   var ApiMixin = require('./util/apiMixin.js')(_, LoadingState, LoadMoreBtn);
-  var IsotopeMixin = require('./util/isotopeMixin.js')();
+  var MasonryMixin = require('./util/masonryMixin.js')();
+  var MasonMixin = require('./util/masonMixin.js')();
   var PromptMixin = require('./util/promptMixin.jsx')(_);
   var DragDropMixin = require('./util/dragDropMixin.js')(_);
   var DateFormatMixin = require('./util/dateFormatMixin.jsx')();
@@ -22,7 +23,7 @@ module.exports = function(React, _, Hub) {
   var PostCard = require('./cards/postCard.jsx')(React, Hub, _, DateFormatMixin, UrlsMixin);
 
   // User
-  var UserHome = require('./pages/user/userHome.jsx')(React, _, PageMixin, IsotopeMixin, PromptMixin, PostCard);
+  var UserHome = require('./pages/user/userHome.jsx')(React, _, PageMixin, MasonMixin, PromptMixin, PostCard);
 
   // Logged Out
   var LoggedOut = require('./pages/loggedout/loggedOut.jsx')(React, _, PageMixin, PromptMixin);

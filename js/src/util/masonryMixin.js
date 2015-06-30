@@ -43,10 +43,16 @@ module.exports = function(){
       var options = self.masonryOptions;
       var masonryDOM = self.refs.masonryContainer.getDOMNode();
 
+      // if you wish to perform a function before initialization
+      if(options.beforeInit) { options.beforeInit(self); }
+
       $(masonryDOM).show();
       self.masonry = new Masonry(masonryDOM, options);
 
       this.imagesLoaded();
+
+      // if you wish to perform a function post-initialization
+      if(options.onInit) { options.onInit(self); }
     },
 
     // update the masonry ref

@@ -37,6 +37,7 @@ module.exports = function (grunt) {
             './js/lib/fingerprint.js',
             './js/lib/director.min.js',
             './js/lib/masonry.pkgd.min.js',
+            './js/lib/mason.min.js',
             './node_modules/isotope-layout/dist/isotope.pkgd.min.js',
             './js/lib/imagesloaded.pkgd.min.js',
             './js/lib/charactercounter.min.js',

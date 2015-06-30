@@ -1,16 +1,33 @@
 /** @jsx React.DOM */
 
-module.exports = function(React, _, PageMixin, IsotopeMixin, PromptMixin, PostCard) {
+module.exports = function(React, _, PageMixin, MasonMixin, PromptMixin, PostCard) {
   return React.createClass({
 
-    mixins: [PageMixin, IsotopeMixin, PromptMixin],
+    mixins: [PageMixin, MasonMixin, PromptMixin],
 
-    isotopeOptions: {
-      selector: '.grid-item',
-      percentPosition: true,
-      masonry: {
-        columnWidth: '.grid-sizer'
-      }
+    masonOptions: {
+      itemSelector: ".grid-item",
+      ratio: 1.5,
+      sizes: [
+          [1,1]
+      ],
+      columns: [
+          [0,480,1],
+          [480,780,2],
+          [780,1080,3],
+          [1080,1150,4],
+          [1150,1300,5],
+          [1300,1450,6],
+          [1450,1600,7],
+          [1600,1800,8],
+          [1800,2000,9]
+      ],
+      promoted: [
+          ['2x1', 2, 1],
+          ['2x2', 2, 2]
+      ],
+      layout: 'fluid',
+      gutter: 1
     },
 
     getInitialState: function () {
@@ -21,9 +38,32 @@ module.exports = function(React, _, PageMixin, IsotopeMixin, PromptMixin, PostCa
             postTitle: 'SpaceX Launches Manned Mission',
             postThumb: 'http://i.imgur.com/bUDJIGY.png',
             postType: 'link',
-            coloring: 'rgb(255,0,0)',
             shares: 143,
-            importance: 6
+            importance: 3
+          },
+          {
+            postId: 'n9W4UFJS',
+            postTitle: 'Posting another status of the day...',
+            postType: 'status',
+            coloring: 'rgba(255,0,140,0.5)',
+            shares: 1,
+            importance: 1
+          },
+          {
+            postId: '0a8sjx8erjf',
+            postTitle: '',
+            postThumb: 'http://i.giphy.com/108Y1SMrGePEDC.gif',
+            postType: 'image',
+            shares: 143,
+            importance: 1
+          },
+          {
+            postId: 'v7sf94jkad',
+            postTitle: 'Happy holidays everyone! I just wanted to say I\'m so proud of all of you!',
+            postType: 'status',
+            coloring: 'rgb(0,255,0,1)',
+            shares: 12,
+            importance: 1
           },
           {
             postId: 'ca93jrfaks',
@@ -32,29 +72,55 @@ module.exports = function(React, _, PageMixin, IsotopeMixin, PromptMixin, PostCa
             postType: 'link',
             coloring: 'rgb(255,0,0)',
             shares: 121,
-            importance: 4
+            importance: 3
+          },
+          {
+            postId: 'z80rfjsj',
+            postTitle: 'New study shows turtles have consistent speed for last 2000 years',
+            postThumb: 'http://i.imgur.com/Jv8tD7m.jpg',
+            postType: 'link',
+            shares: 143,
+            importance: 1
           },
           {
             postId: '23fc9g4hs',
             postTitle: 'Baby Photos 2015',
+            postThumb: 'http://i.imgur.com/S3PnkCN.png',
             postType: 'album',
-            coloring: 'rgb(255,0,0)',
             shares: 48,
-            importance: 3
+            importance: 2
+          },
+          {
+            postId: 'b8q3kenfaj',
+            postTitle: 'Cheese pizza is the bomb.',
+            postType: 'status',
+            coloring: 'rgba(0,0,255,0.3)',
+            shares: 143,
+            importance: 1
+          },
+          {
+            postId: 'jg359sdffaj',
+            postTitle: 'And you have it...',
+            postThumb: 'http://31.media.tumblr.com/33c664a4bddea9acbc0ea5a2e8b1f543/tumblr_nfrqp8DbmW1rlapeio3_500.gif',
+            postType: 'image',
+            coloring: 'rgb(0,0,255)',
+            shares: 143,
+            importance: 1
           },
           {
             postId: 'lw9rjacb4',
             postTitle: 'Waiting in line these days...third world problems.',
             postType: 'status',
-            coloring: 'rgb(255,0,0)',
+            coloring: 'rgba(40,0,0,1)',
             shares: 143,
             importance: 1
           },
           {
             postId: 'nS8rj4fg',
             postTitle: 'Study shows promise for Alzheimer\'s prevention',
+            postThumb: 'http://i.imgur.com/Oq6Phhm.jpg',
             postType: 'status',
-            coloring: 'rgb(255,0,0)',
+            coloring: 'rgba(34,41,0,0.5)',
             shares: 143,
             importance: 2
           },
@@ -63,18 +129,9 @@ module.exports = function(React, _, PageMixin, IsotopeMixin, PromptMixin, PostCa
             postTitle: 'U2 launches new record album',
             postThumb: 'http://i.imgur.com/oU33oNy.jpg',
             postType: 'link',
-            coloring: 'rgb(255,0,255)',
             shares: 143,
             importance: 2
-          },
-          {
-            postId: 'b8q3kenfaj',
-            postTitle: 'Cheese pizza is the bomb.',
-            postType: 'status',
-            coloring: 'rgb(0,0,255)',
-            shares: 143,
-            importance: 1
-          },
+          }
         ]  
       };
     },
@@ -85,9 +142,8 @@ module.exports = function(React, _, PageMixin, IsotopeMixin, PromptMixin, PostCa
       return (
         <div>
           {/* Masonry container */}
-          <div className="container-fluid sy-page sy-bg-white">
-            <div ref="isotopeContainer" id="isotopeContainer" className="sy-grid sy-feed-grid">
-              <div className="grid-sizer"></div>
+          <div className="">
+            <div ref="masonContainer" id="masonContainer" className="sy-grid sy-feed-grid">
             { _.map(self.state.posts, function(item) {
 
               return PostCard(_.extend({}, self.props, {

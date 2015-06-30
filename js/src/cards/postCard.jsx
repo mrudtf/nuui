@@ -14,23 +14,30 @@ module.exports = function(React, Hub, _, DateFormatMixin, UrlsMixin) {
       };
     },
 
-    getPostWidth: function() {
-      var self = this;
-      return (self.props.post.importance * 10).toString()+'%';
-    },
-
-    getPostHeight: function() {
-      var importance = this.props.post.importance;
-
-      if(importance < 2) {
-        return 50;
-      } else if (5 > importance >= 2) {
-        return 80;
-      } else if (8 > importance >= 5) {
-        return 120;
-      } else {
-        return 200;
+    getDimensions: function() {
+      var self= this,
+          d = 0;
+      switch(self.props.post.importance) {
+        case 1:
+          d = "1x1";
+          break;
+        case 2:
+          d = "2x1";
+          break;
+        case 3:
+          d = "2x2";
+          break;
+        case 4:
+          d = "*x1";
+          break;
+        case 5:
+          d = "*x2";
+          break;
+        default:
+          d = "1x1";
+          break;
       }
+      return d;
     },
 
     renderBackgroundImg: function() {
@@ -44,14 +51,28 @@ module.exports = function(React, Hub, _, DateFormatMixin, UrlsMixin) {
       var self = this;
 
       var postLink = self.urls.postUrl(self.props.post.postId);
-
       var formattedTime = self.timeAgo(self.props.post.createdDate);
+
+      var className = "grid-item post-card "+self.getDimensions();
+      var style = {'background-image': self.renderBackgroundImg()};
+      var coloring = self.props.post.coloring;
+      if(typeof coloring!=='undefined') {
+        _.extend(style, {'background-color': coloring})
+      }
       
       return (
-        <div className="grid-item" style={{'background-image': self.renderBackgroundImg(), width: self.getPostWidth(), height: self.getPostHeight()}}>
-          <div className="text-overlay">
-            {self.props.post.postTitle}
-          </div>
+        <div className={className} style={style}>
+          <a>
+            <h2>
+              <span className="height-ellipsis">
+                <span className="post-title">{self.props.post.postTitle}</span>
+              </span>
+            </h2>
+          </a>
+          <span className="stats">
+            <span className="channel">In {self.props.post.postType}s</span>
+            <span className="shares"><i className="fa fa-code-fork"></i> {self.props.post.shares}</span>
+          </span>
         </div>
       );
 
