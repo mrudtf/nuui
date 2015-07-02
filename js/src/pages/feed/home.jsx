@@ -141,20 +141,18 @@ module.exports = function(React, _, PageMixin, MasonMixin, PromptMixin, PostCard
 
       return (
         <div>
-          {/* Masonry container */}
-          <div className="">
-            <div ref="masonContainer" id="masonContainer" className="sy-grid sy-feed-grid">
-            { _.map(self.state.posts, function(item) {
+          {/* mason feed container */}
+          <div ref="masonContainer" id="masonContainer" className="sy-grid sy-feed-grid" style={{background: '#363639'}}>
+          { _.map(self.state.posts, function(item) {
 
-              return PostCard(_.extend({}, self.props, {
-                post: item, 
-                key: item.postId
-              }))
+            return PostCard(_.extend({}, self.props, {
+              post: item, 
+              key: item.postId
+            }))
 
-            }) }
+          }) }
 
-            <div className="clearfix"></div>
-            </div>
+          <div className="clearfix"></div>
           </div>
         </div>
       );

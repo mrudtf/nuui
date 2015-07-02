@@ -5,7 +5,7 @@
 
 /* Sidebar */
 .navbar-default.navbar-static-side {
-  background-color: #2f4050;
+  background: #2f4050;
 }
 .navbar-default.navbar-static-side {
   .nav > li > a {
@@ -27,6 +27,13 @@
     z-index: 100;
     width: 70px;
     right: 0;
+    background: -moz-linear-gradient(left, rgba(37,50,61,1) 0%, rgba(47,64,80,1) 26%, rgba(47,64,80,1) 100%);
+    background: -webkit-gradient(left top, right top, color-stop(0%, rgba(37,50,61,1)), color-stop(26%, rgba(47,64,80,1)), color-stop(100%, rgba(47,64,80,1)));
+    background: -webkit-linear-gradient(left, rgba(37,50,61,1) 0%, rgba(47,64,80,1) 26%, rgba(47,64,80,1) 100%);
+    background: -o-linear-gradient(left, rgba(37,50,61,1) 0%, rgba(47,64,80,1) 26%, rgba(47,64,80,1) 100%);
+    background: -ms-linear-gradient(left, rgba(37,50,61,1) 0%, rgba(47,64,80,1) 26%, rgba(47,64,80,1) 100%);
+    background: linear-gradient(to right, rgba(37,50,61,1) 0%, rgba(47,64,80,1) 26%, rgba(47,64,80,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#25323d', endColorstr='#2f4050', GradientType=1 );
   }
   .navbar-default.navbar-static-side {
     .nav > li {

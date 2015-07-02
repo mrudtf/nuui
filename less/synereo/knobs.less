@@ -1,0 +1,48 @@
+/* variables */
+@knob-margin:       20px 30px;
+@knob-dimension:    90px;
+@knob-label-size:   16px;
+@knob-label-font:   @text-normal-font;
+
+/* active knob component */
+.knob-container {
+  margin: @knob-margin;
+  display: inline-block;
+  width: @knob-dimension;
+  text-align: center;
+}
+.knob-container {
+  .knob-label {
+    font-size: @knob-label-size;
+    font-family: @knob-label-font;
+  }
+}
+
+/* placeholder container of matching dimensions */
+.knob-placeholder {
+  width: 150px;
+  margin: @knob-margin;
+  display: block;
+  float: left;
+  text-align: center;
+  opacity: 0.6;
+  transition: opacity .5s ease-in-out;
+  -moz-transition: opacity .5s ease-in-out;
+  -webkit-transition: opacity .5s ease-in-out;
+}
+.knob-placeholder:hover {
+  opacity: 1;
+  cursor: pointer;
+}
+.knob-placeholder {
+  ul {
+    margin: 0 0 0 -5px;
+    padding: 0;
+    list-style-image: none;
+    list-style-type: none;
+  }
+  ul > li {
+    float: left;
+    margin-bottom: 5px;
+  }
+}

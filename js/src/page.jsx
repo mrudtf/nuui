@@ -17,8 +17,6 @@ module.exports = function(React, _, Hub) {
   var DateFormatMixin = require('./util/dateFormatMixin.jsx')();
   var UrlsMixin = require('./util/urlsMixin.js')();
 
-  // Utilities
-
   // Cards
   var PostCard = require('./cards/postCard.jsx')(React, Hub, _, DateFormatMixin, UrlsMixin);
 
@@ -28,8 +26,6 @@ module.exports = function(React, _, Hub) {
 
   // Logged Out
   var LoggedOut = require('./pages/loggedout/loggedOut.jsx')(React, _, PageMixin, PromptMixin);
-
-  // Trending
 
   // Testing
   var TestPrompts = require('./pages/testing/testPrompts.jsx')(React, _, PageMixin);

@@ -3,12 +3,9 @@
 module.exports = function(Hub, React, _, Page) {
 
   var DropdownBtn = require('./elements/dropdownBtn.jsx')(React, _, Hub);
-  var ApiMixin = require('./util/apiMixin.js')();
-  var PromptMixin = require('./util/promptMixin.jsx')(_);
+  var MixboardInline = require('./pages/mixboard/mixboardInline.jsx')(React, _, Hub);
 
   return React.createClass({
-
-    mixins: [ApiMixin, PromptMixin],
 
     getInitialState: function(){
       return { 
@@ -19,6 +16,13 @@ module.exports = function(Hub, React, _, Page) {
           email: 'justinlong@outlook.com'
         }
       };
+    },
+
+    componentDidMount: function () {
+      var self = this;
+      setTimeout(function() {
+        $(self.refs.mixboardInlineContainer.getDOMNode()).slideToggle();
+      }, 2000);
     },
 
     authenticateUser: function() {
@@ -39,8 +43,11 @@ module.exports = function(Hub, React, _, Page) {
       });
     },
 
-    openMixboard: function() {
-      window.location.hash = '/mixboard';
+    toggleMixboard: function() {
+      var self = this,
+        $element = $(self.refs.mixboardInlineContainer.getDOMNode());
+
+      $element.slideToggle();
     },
 
     render: function() {
@@ -56,7 +63,7 @@ module.exports = function(Hub, React, _, Page) {
                   <a href="#/home"><img src={self.props.staticImage("logo-square.png")} /></a>
                 </li>
                 <li className="nav-btn">
-                  <button type="button" className="btn btn-sy-blue" onClick={self.openMixboard}><i className="fa fa-sliders"></i> Mixboard</button>
+                  <button type="button" className="btn btn-sy-blue" onClick={self.toggleMixboard}><i className="fa fa-sliders"></i> Mixboard</button>
                 </li>
               </ul>
               <div className="navbar-header">
@@ -95,6 +102,13 @@ module.exports = function(Hub, React, _, Page) {
 
           {/* main page */}
           <div className="sy-page" id="sy-page">
+
+            {/* mini mixboard */}
+            <div ref="mixboardInlineContainer">
+            {MixboardInline(_.extend({}, self.props))}
+            </div>
+
+            {/* main routing component */}
             {Page(_.extend({}, self.props, {
               setTitle: self.setTitle, 
               isAuthenticated: self.state.isAuthenticated,
