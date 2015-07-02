@@ -1,63 +1,43 @@
-.transition {
-  -webkit-transition: background-color .1s ease-out;
-  -moz-transition: background-color .1s ease-out;
-  -o-transition: background-color .1s ease-out;
-  transition: background-color .1s ease-out;
-}
-
 .btn {
   font-family: @btns-bold-font;
   font-weight: normal;
   text-transform: uppercase;
-  border-radius: 0;
 }
 
-
-.btn-navbar {
-  position: relative;
-  padding: 4px 9px;
-  margin-top: 8px;
-  margin-bottom: 2px;
-  background-color: transparent;
-  background-image: none;
-  border-radius: 4px;
-  color: #fff;
-  font-size: 1.4em;
-}
-.btn-navbar:hover,
-.btn-navbar:focus,
-.btn-navbar:active,
-.btn-navbar.active {
-  background-color: transparent !important;
-  border-color: #fff;
-  border: solid 1px #fff;
-  color: #fff;
-}
-.btn-navbar .fa {
-  vertical-align: text-bottom;
-}
-.btn-navbar .hidden-text {
-  display: none;
-  font-size: 0.8em;
-}
-.btn-navbar:hover .hidden-text,
-.btn-navbar:focus .hidden-text,
-.btn-navbar:active .hidden-text,
-.btn-navbar.active  .hidden-text {
-  display: inline;
-}
-
-@media (max-width: 768px) {
-  .btn-navbar:hover .hidden-text,
-  .btn-navbar:focus .hidden-text,
-  .btn-navbar:active .hidden-text,
-  .btn-navbar.active  .hidden-text {
-    display: none;
+/* navigation buttons */
+.nav.navbar-nav {
+  li > .btn {
+    border-radius: 7px;
+    margin: 8px 15px;
   }
 }
 
-@media (min-width: 1024px) {
-  .btn-navbar .hidden-text {
-    display: inline !important;
-  }
+/* button coloring */
+.btn-sy-blue {
+  color: #FFF;
+  background-color: #51bae8;
+  border-color: #51bae8;
+}
+.btn-sy-blue:hover,
+.btn-sy-blue:focus,
+.btn-sy-blue:active,
+.btn-sy-blue.active {
+  color: #FFF;
+  background-color: #1ea2d9;
+  border-color: #1b91c3;
+}
+.btn-sy-blue.disabled:hover,
+.btn-sy-blue.disabled:focus,
+.btn-sy-blue.disabled:active,
+.btn-sy-blue.disabled.active,
+.btn-sy-blue[disabled]:hover,
+.btn-sy-blue[disabled]:focus,
+.btn-sy-blue[disabled]:active,
+.btn-sy-blue[disabled].active,
+fieldset[disabled] .btn-sy-blue:hover,
+fieldset[disabled] .btn-sy-blue:focus,
+fieldset[disabled] .btn-sy-blue:active,
+fieldset[disabled] .btn-sy-blue.active {
+  background-color: #2FADE2;
+  border-color: #2FADE2;
 }

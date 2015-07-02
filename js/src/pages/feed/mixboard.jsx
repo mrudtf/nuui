@@ -1,6 +1,6 @@
 /** @jsx React.DOM */
 
-module.exports = function(React, _, PageMixin, MasonMixin, PromptMixin, PostCard) {
+module.exports = function(React, _, PageMixin, MasonMixin, PromptMixin) {
   return React.createClass({
 
     mixins: [PageMixin, MasonMixin, PromptMixin],
@@ -13,14 +13,14 @@ module.exports = function(React, _, PageMixin, MasonMixin, PromptMixin, PostCard
       ],
       columns: [
           [0,480,1],
-          [480,780,2],
-          [780,1080,3],
-          [1080,1150,4],
-          [1150,1300,5],
-          [1300,1450,6],
-          [1450,1600,7],
-          [1600,1800,8],
-          [1800,2000,9]
+          [480,728,2],
+          [728,900,3],
+          [900,1050,4],
+          [1050,1200,5],
+          [1200,1350,6],
+          [1350,1400,7],
+          [1400,1550,8],
+          [1550,2000,10]
       ],
       promoted: [
           ['2x1', 2, 1],

@@ -3,15 +3,13 @@
 /* Variables come first */
 @import "variables.less";
 
-.sy-container, .sy-overrides {
-  @import "../node_modules/bootstrap/less/bootstrap.less";
-  @import "ipin/ipin.less";
-  @import "synereo/synereo.less";
-}
+/* Main stuff */
+@import "../node_modules/bootstrap/less/bootstrap.less";
+@import "ipin/ipin.less";
+@import "synereo/synereo.less";
 
-.sy-overrides {
-  @import "overrides/overrides.less";
-}
+/* Overrides for things like modals */
+@import "overrides/overrides.less";
 
 .sy-container {
   position: absolute;

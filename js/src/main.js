@@ -86,7 +86,8 @@ if(typeof (syConfig || {}).killSwitch==="undefined") {
       return staticImgPath+imageName;
     },
     Hub: Hub,
-    fp: window.sy_fp
+    fp: window.sy_fp,                     // fingerprint of the browser session
+    titleBase: 'Synereo'                  // default title used for browser bar
   }
 
   // render SPA component

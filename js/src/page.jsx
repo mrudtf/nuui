@@ -22,8 +22,9 @@ module.exports = function(React, _, Hub) {
   // Cards
   var PostCard = require('./cards/postCard.jsx')(React, Hub, _, DateFormatMixin, UrlsMixin);
 
-  // User
-  var UserHome = require('./pages/user/userHome.jsx')(React, _, PageMixin, MasonMixin, PromptMixin, PostCard);
+  // Feed
+  var FeedHome = require('./pages/feed/home.jsx')(React, _, PageMixin, MasonMixin, PromptMixin, PostCard);
+  var FeedMixboard = require('./pages/feed/mixboard.jsx')(React, _, PageMixin, MasonMixin, PromptMixin);
 
   // Logged Out
   var LoggedOut = require('./pages/loggedout/loggedOut.jsx')(React, _, PageMixin, PromptMixin);
@@ -52,7 +53,10 @@ module.exports = function(React, _, Hub) {
      */
     routes: {
       '/':                'loggedout',
-      '/home':            'home', 
+
+      // feed
+      '/home':            'feedHome', 
+      '/mixboard':        'feedMixboard', 
 
       // testing routes
       '/_/test/prompts': 'testPrompts'
@@ -64,10 +68,18 @@ module.exports = function(React, _, Hub) {
       );
     },
 
-    home: function() {
+    feedHome: function() {
       this.runSecureRoute(
         this.props.session,
-        UserHome(_.extend({}, this.props, { title: '' })),
+        FeedHome(_.extend({}, this.props, { title: 'My Feed' })),
+        this.notAuthorized()
+      );
+    },
+
+    feedMixboard: function() {
+      this.runSecureRoute(
+        this.props.session,
+        FeedMixboard(_.extend({}, this.props, { title: 'Mixboard' })),
         this.notAuthorized()
       );
     },

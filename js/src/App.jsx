@@ -27,60 +27,20 @@ module.exports = function(Hub, React, _, Page) {
 
     setTitle: function(title) {
       this.setState({pageTitle: title});
+      document.title = title + ' | ' + this.props.titleBase;
     },
 
     toggleMenu: function(){
-      $('#sy-menu').toggleClass('in');
+      $('body').toggleClass('sy-sidebar-open');
 
       $(document).on('click', function(){
-        $('#sy-menu').removeClass('in');
+        $('body').removeClass('sy-sidebar-open');
         $(document).off('click');
       });
     },
 
-    renderTitle: function() {
-      var self = this;
-
-      if(self.state.isAuthenticated) {
-        if(self.state.pageTitle=='') {
-          return (
-            <img src={self.props.staticImage("logo-square.png")} />
-          )
-        } else {
-          return (
-            <span class="sy-title">{self.state.pageTitle}</span>
-          )
-        }
-      } else {
-
-        return (
-          <img src={self.props.staticImage("logo-square.png")} />
-        )
-      }
-    },
-
-    renderMenu: function() {
-      var self = this;
-
-      if(self.state.isAuthenticated) {
-        return (
-          <ul className="nav navbar-nav" onClick={self.toggleMenu}>
-            <li className=""><a href="#/link"><i className="sy-trending"></i> Link</a></li>
-          </ul>
-        )
-
-      } else {
-        return (
-          <ul className="nav navbar-nav" onClick={self.toggleMenu}>
-            <li className=""><a href="#/"><i className="sy-trending"></i> Login</a></li>
-            <li className=""><a href="#/about"><i className="sy-trending"></i> About</a></li>
-          </ul>
-        )
-      }
-    },
-
-    renderNavigation: function() {
-
+    openMixboard: function() {
+      window.location.hash = '/mixboard';
     },
 
     render: function() {
@@ -88,11 +48,17 @@ module.exports = function(Hub, React, _, Page) {
 
       return (
         <div className="sy-scaffold">
+          {/* top navigation */}
           <nav className="navbar navbar-default navbar-primary navbar-fixed-top">
             <div className="container-fluid">
-                <div className="center-block">
-                  {self.renderTitle()}
-                </div>
+              <ul className="nav navbar-nav navbar-left">
+                <li>
+                  <a href="#/home"><img src={self.props.staticImage("logo-square.png")} /></a>
+                </li>
+                <li className="nav-btn">
+                  <button type="button" className="btn btn-sy-blue" onClick={self.openMixboard}><i className="fa fa-sliders"></i> Mixboard</button>
+                </li>
+              </ul>
               <div className="navbar-header">
                 <button className="navbar-toggle" type="button" onClick={self.toggleMenu}>
                   <span className="sr-only">Toggle navigation</span>
@@ -101,18 +67,41 @@ module.exports = function(Hub, React, _, Page) {
                   <span className="icon-bar"></span>
                 </button>
               </div>
-              <div className="collapse navbar-collapse" id="sy-menu">
-                {self.renderMenu()}
-              </div>
             </div>
           </nav>
 
-          {Page(_.extend({}, self.props, {
-            setTitle: self.setTitle, 
-            isAuthenticated: self.state.isAuthenticated,
-            authenticateUser: self.authenticateUser, 
-            session: self.state.session
-          }))}
+          {/* side navigation */}
+          <nav className="navbar-default navbar-static-side" role="navigation">
+            <div className="sidebar-collapse">
+              <ul className="nav metismenu" id="side-menu">
+                <li className="active">
+                  <a href="index.html">
+                    <i className="fa fa-th-large"></i> <span className="nav-label">My Feed</span> <span className="fa arrow"></span>
+                  </a>
+                </li>
+                <li className="">
+                  <a href="index.html">
+                    <i className="fa fa-comments"></i> <span className="nav-label">Messages</span> <span className="fa arrow"></span>
+                  </a>
+                </li>
+                <li className="">
+                  <a href="index.html">
+                    <i className="fa fa-bell"></i> <span className="nav-label">Notifications</span> <span className="fa arrow"></span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+
+          {/* main page */}
+          <div className="sy-page" id="sy-page">
+            {Page(_.extend({}, self.props, {
+              setTitle: self.setTitle, 
+              isAuthenticated: self.state.isAuthenticated,
+              authenticateUser: self.authenticateUser, 
+              session: self.state.session
+            }))}
+          </div>
 
         </div>
       );
