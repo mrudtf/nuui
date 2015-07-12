@@ -2,8 +2,8 @@
 
 module.exports = function(Hub, React, _, Page) {
 
-  var DropdownBtn = require('./elements/dropdownBtn.jsx')(React, _, Hub);
-  var MixboardInline = require('./pages/mixboard/mixboardInline.jsx')(React, _, Hub);
+  var DropdownBtn = require('./components/dropdownBtn.jsx')(React, _, Hub);
+  var MixboardInline = require('./components/mixboard/mixboardInline.jsx')(React, _, Hub);
 
   return React.createClass({
 

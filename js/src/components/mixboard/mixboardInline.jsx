@@ -2,7 +2,7 @@
 
 module.exports = function(React, _, Hub) {
   
-  var Knob = require('../../elements/knob.jsx')(React, _);
+  var Knob = require('./knob.jsx')(React, _);
 
   return React.createClass({
 
@@ -68,18 +68,22 @@ module.exports = function(React, _, Hub) {
       };
     },
 
+    openLink: function(link) {
+      window.location.hash = link;
+    },
+
     render: function() {
       var self = this;
 
       return (
         <div>
           {/* knob scrolling container */}
-          <div className="scroller-horizontal" style={{'max-height': 200}}>
+          <div className="scroller-horizontal" style={{maxHeight: 200}}>
 
             <div className="knob-placeholder">
               <ul>
                 <li><button type="button" className="btn btn-default"><i className="fa fa-plus"></i> New Channel</button></li>
-                <li><button type="button" className="btn btn-default"><i className="fa fa-sliders"></i> Advanced Mixing</button></li>
+                <li><button type="button" className="btn btn-default" onClick={self.openLink.bind(self, "/mixboard")}><i className="fa fa-sliders"></i> Advanced Mixing</button></li>
                 <li><button type="button" className="btn btn-default"><i className="fa fa-question-circle"></i> How-To</button></li>
               </ul>
             </div>

@@ -4,7 +4,7 @@ module.exports = function(React, _, Hub) {
 
   // States
   var LoadingState = require('./states/loading.jsx')(React, _);
-  var LoadMoreBtn = require('./elements/loadMoreBtn.jsx')(React, _);
+  var LoadMoreBtn = require('./components/loadMoreBtn.jsx')(React, _);
 
   // Mixins
   var RouterMixin = require('./util/routerMixin.js')();
@@ -22,7 +22,7 @@ module.exports = function(React, _, Hub) {
 
   // Feed
   var FeedHome = require('./pages/feed/home.jsx')(React, _, PageMixin, MasonMixin, PromptMixin, PostCard);
-  var FeedMixboard = require('./pages/feed/mixboard.jsx')(React, _, PageMixin, MasonMixin, PromptMixin);
+  var FeedMixboard = require('./pages/feed/mixboard.jsx')(React, _, Hub);
 
   // Logged Out
   var LoggedOut = require('./pages/loggedout/loggedOut.jsx')(React, _, PageMixin, PromptMixin);

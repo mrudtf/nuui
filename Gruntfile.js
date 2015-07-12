@@ -38,6 +38,7 @@ module.exports = function (grunt) {
             './js/lib/director.min.js',
             './js/lib/mason.min.js',
             './js/lib/jquery.knob.min.js',
+            './js/lib/bootstrap-slider.min.js',
             './js/lib/charactercounter.min.js',
             './node_modules/bootstrap/js/modal.js',
             './node_modules/bootbox/bootbox.js',
@@ -48,6 +49,7 @@ module.exports = function (grunt) {
         css: {
           src: [
             'css/*.css',
+            'css/lib/ *.css',
             'css/fonts/*.css'
           ],
           dest: 'dist/synereo.css'

@@ -34,6 +34,10 @@
     background: -ms-linear-gradient(left, rgba(37,50,61,1) 0%, rgba(47,64,80,1) 26%, rgba(47,64,80,1) 100%);
     background: linear-gradient(to right, rgba(37,50,61,1) 0%, rgba(47,64,80,1) 26%, rgba(47,64,80,1) 100%);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#25323d', endColorstr='#2f4050', GradientType=1 );
+    transition: width 0.5s;
+    -moz-transition: width 0.5s; /* Firefox 4 */
+    -webkit-transition: width 0.5s; /* Safari and Chrome */
+    -o-transition: width 0.5s; /* Opera */
   }
   .navbar-default.navbar-static-side {
     .nav > li {
@@ -65,10 +69,6 @@
   @media (min-width: 768px) {
     .navbar-default.navbar-static-side {
       width: 220px !important;
-      transition: width 1s;
-      -moz-transition: width 1s; /* Firefox 4 */
-      -webkit-transition: width 1s; /* Safari and Chrome */
-      -o-transition: width 1s; /* Opera */
     }
   }
 }
