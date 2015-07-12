@@ -14,6 +14,7 @@ module.exports = function(React, _) {
       value: React.PropTypes.number.isRequired,
       toolTip: React.PropTypes.bool,
       orientation: React.PropTypes.string,
+      reversed: React.PropTypes.bool,
       onSlide: React.PropTypes.func
     },
 
@@ -25,6 +26,7 @@ module.exports = function(React, _) {
         value: 50,
         toolTip: true,
         orientation: 'vertical',
+        reversed: true,
         onChange: function() {}
       };
     },
@@ -36,14 +38,20 @@ module.exports = function(React, _) {
     componentDidMount: function() {
       var self = this;
 
-      var toolTip = self.props.toolTip ? 'show' : 'hide';
-      self.slider = $(self.refs.sliderContainer.getDOMNode()).slider({
+      // set up variables
+      var toolTip = self.props.toolTip ? 'show' : 'hide',
+        sliderDOM = self.refs.slider.getDOMNode(),
+        sliderContainerDOM = self.refs.sliderContainer.getDOMNode();
+
+      // set up the slider
+      self.slider = new Slider(sliderDOM, {
         id: self.props.key,
         min: self.props.min,
         max: self.props.max,
         step: self.props.step,
         value: self.props.value,
         orientation: self.props.orientation,
+        reversed: self.props.reversed,
         tooltip: toolTip
       });
       
@@ -56,13 +64,32 @@ module.exports = function(React, _) {
       }.bind(self));
     },
 
+    toggleValue: function() {
+      var self = this;
+
+      if(self.slider.getValue()===0) {
+        self.slider.setValue(self.props.value);
+      } else {
+        self.slider.setValue(0);
+      }
+    },
+
+    advancedEdit: function() {
+      var self = this;
+      window.location.hash = '#/mixboard/channel/'+self.props.channelId;
+    },
+
     render: function() {
       var self = this;
-      
+
       return (
-        <div className="slider-container">
-          <div className="knob-label">{self.props.label}</div>
-          <input type="text" ref="sliderContainer" />
+        <div className="slider-container" ref="sliderContainer">
+          <div className="slider-label">{self.props.label}</div>
+          <input type="text" ref="slider" />
+          <div className="btn-group" role="group">
+            <button type="button" className="btn btn-default" onClick={self.advancedEdit}><i className="fa fa-pencil"></i></button>
+            <button type="button" className="btn btn-default" onClick={self.toggleValue}><i className="fa fa-power-off"></i></button>
+          </div>
         </div>
       );
     }

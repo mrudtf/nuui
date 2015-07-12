@@ -72,22 +72,34 @@ module.exports = function(React, _, Hub) {
       window.location.hash = link;
     },
 
+    componentDidMount: function () {
+      // ensure the container is page height for style purposes
+      var el = this.refs.mixboardContainer.getDOMNode(),
+        $el = $(el),
+        $syPage = $('#sy-page');
+
+      $el.height($syPage.height()-20);
+    },
+
     render: function() {
       var self = this;
 
       return (
         <div>
           {/* knob scrolling container */}
-          <div className="scroller-horizontal" style={{minHeight: 500}}>
+          <div className="scroller-horizontal" ref="mixboardContainer">
 
             { _.map(self.state.knobs, function(item) {
 
               return Slider(_.extend({}, self.props, {
                 key: item.channelId,
+                channelId: item.channelId,
                 value: item.value, 
                 label: item.channel,
-                onSlide: function(v) {
-                  console.log('Channel '+item.channel+': '+v)
+                onChange: function(e) {
+                  if(e.type==='slideStop') {
+                    console.log('Channel '+item.channel+': '+e.value)
+                  }
                 },
               }))
 

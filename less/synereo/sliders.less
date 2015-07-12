@@ -1,8 +1,9 @@
 /* variables */
-@slider-margin:       20px 30px;
-@slider-dimension:    90px;
-@slider-label-size:   16px;
-@slider-label-font:   @text-normal-font;
+@slider-margin:               20px 30px;
+@slider-dimension:            90px;
+@slider-label-size:           16px;
+@slider-label-font:           @text-normal-font;
+@slider-track-color-enabled:  #C2D7E9;
 
 /* active knob component */
 .slider-container {
@@ -10,10 +11,25 @@
   display: inline-block;
   width: @slider-dimension;
   text-align: center;
+  height: 60%;
 }
 .slider-container {
   .slider-label {
     font-size: @slider-label-size;
     font-family: @slider-label-font;
+    margin-bottom: 10px;
+  }
+  .btn-group {
+    display: block;
+    margin-left: 7px;
+  }
+  .slider.slider-vertical {
+    height: 100% !important;
+    margin-bottom: 10px;
+  }
+  .slider {
+    .slider-track-high {
+      background-color: @slider-track-color-enabled;
+    }
   }
 }

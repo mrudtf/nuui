@@ -101,7 +101,7 @@ module.exports = function(Hub, React, _, Page) {
           </nav>
 
           {/* main page */}
-          <div className="sy-page" id="sy-page">
+          <div className="sy-page" id="sy-page" ref="syPage">
 
             {/* mini mixboard */}
             <div ref="mixboardInlineContainer">
